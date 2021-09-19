@@ -75,17 +75,6 @@ img {
     margin-bottom: 1em;
 }
 
-.btn__discard {
-    background-color: var(--lt-blush);
-    color: var(--drk-grey);
-    border: 1px solid var(--drk-grey);
-    border-radius: 70%;
-    padding: .5em;
-    height: 4.5em;
-    cursor: pointer;
-    margin-bottom: 1em;
-}
-
 .hidden {
     display: none;
 }
@@ -99,17 +88,29 @@ img {
     max-width: 15em;
 }
 
-.modal {
+.modal,
+.easteregg {
     position: absolute;
     top: auto;
     left: auto;
-    height: 750%;
-    width: 750%;
+    height: 75%;
+    width: 75%;
     margin: 0 auto;
     border-radius: 10px;
 }
 
 .modal > img {
+    filter: hue-rotate(190deg);
+    object-fit: cover;
+    max-width: 98vw;
+    max-height: 98vh;
+    border-radius: 10px;
+    padding: .3em;
+    margin: 0 auto;
+    display: block;
+}
+
+.easteregg > img {
     filter: hue-rotate(230deg);
     object-fit: cover;
     max-width: 98vw;
@@ -122,8 +123,6 @@ img {
 
 @media (min-width: 600px) {
     .modal {
-       /* top: 5em;
-        left: 20em;*/
         margin: 0 auto;
         top: auto;
         left: auto;
