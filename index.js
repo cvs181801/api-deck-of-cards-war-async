@@ -78,7 +78,6 @@ async function handleClickDeal() {
         jokers_enabled: true,
     })
     const data = await res.json()
-        let deckId = `${data.deck_id}`;
         console.log(data);
         let cardsLeft = data.remaining;
         renderCardsLeft.textContent = `Cards left: ${cardsLeft}`;
@@ -90,35 +89,40 @@ async function handleClickDeal() {
         card2Img.src = `${data.cards[1].image}`;
         container.append(card2Img);
         container.append(card2ImgIndicator);
+        determineWinner(data.cards[0].value, data.cards[1].value, cardsLeft);
 } //close function handleClick Deal()
 
-//make the deal button work
-
-dealBtn.addEventListener("click", function(e) {
-e.preventDefault();
-handleClickDeal();
-determineWinner(data.cards[0].value, data.cards[1].value, cardsLeft);
-
-discardBtn.addEventListener("click", function(e) {
-    e.preventDefault();
+//create a way to discard the cards to the discard pile.
+async function handleClickDiscard() {
     myScoreParagraph.textContent = "";
     computersScoreParagraph. textContent = "";
     paragraph.textContent = "";
     discardBtn.classList.add("hidden");
     drawBtn.classList.remove("hidden");
+    let deckId = `${data.deck_id}`;
     console.log(deckId);
     let playerCardCode = data.cards[0].code;
     let computerCardCode = data.cards[1].code;
     console.log(playerCardCode);
     console.log(computerCardCode); //https://apis.scrimba.com/deckofcards/api/deck/new/draw/?count=2   //`https://www.deckofcardsapi.com/api/deck/${deckId}/pile/${discardPile}/add/?cards=${playerCardCode},${computerCardCode}`
-    fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/pile/discardPile/add/?cards=${playerCardCode},${computerCardCode}`)
-        .then(res => res.json())
-        .then((data) => {
+    const res = await fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/pile/discardPile/add/?cards=${playerCardCode},${computerCardCode}`)
+        const data = await res.json()    
             console.log(data)
             console.log(data.remaining)
             card1Img.src = "";
             card2Img.src = "";
-        })   
+}
+//make the deal button work:
+
+dealBtn.addEventListener("click", function(e) {
+e.preventDefault();
+handleClickDeal();
+
+//make the discard button work:
+
+discardBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    handleClickDiscard();
     })
 
     drawBtn.addEventListener("click", function(e) {
