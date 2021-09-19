@@ -9,60 +9,66 @@ const allNodes = document.getElementsByTagName('*');
         const resultDiv = document.querySelector(".resultDiv");
         const modalDiv = document.querySelector(".modal");
         const scoreDiv = document.querySelector(".score");
-            //header:
-            const header = document.querySelector("h1");
-                //create card image elements:
-                let card1Img = document.createElement('img');
-                card1Img.style.alignItems = "center";
-                card1Img.style.justifyContent = "center";
-                let card2Img = document.createElement('img');
-                card2Img.style.alignItems = "center";
-                card2Img.style.justifyContent = "center";
-                const card1ImgIndicator = document.createElement("div");
-                const card2ImgIndicator = document.createElement("div");
-                    //style the img indicators:
-                    card1ImgIndicator.style.backgroundColor = "var(--robins-egg)";
-                    card1ImgIndicator.style.height = "2.5em";
-                    card1ImgIndicator.style.width = "2.5em";
-                    card1ImgIndicator.style.border = ".8px solid grey";
-                    card1ImgIndicator.style.borderRadius = "50%";
-                    card1ImgIndicator.textContent = `You`;
-                    card1ImgIndicator.style.textAlign = "center";
-                    card1ImgIndicator.style.alignItems = "center";
-                    card1ImgIndicator.style.color = "white";
-                    card1ImgIndicator.style.fontFamily = "inherit";
-                    card1ImgIndicator.style.fontSize = "2rem";
-                    card1ImgIndicator.style.marginRight = ".5em";
-                    card1ImgIndicator.classList.add("container__card1image-indicator");
+        const easterEggModal = document.querySelector(".easteregg");
+            //easter egg modal div styling
+            const easterEggImg = document.createElement("img");
+            easterEggImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/cards.jpeg";
+            easterEggModal.append(easterEggImg);
+            const easterEggParagraph = document.querySelector(".easteregg__p");
+                //header:
+                const header = document.querySelector("h1");
+                        //create card image elements:
+                        let card1Img = document.createElement('img');
+                        card1Img.style.alignItems = "center";
+                        card1Img.style.justifyContent = "center";
+                        let card2Img = document.createElement('img');
+                        card2Img.style.alignItems = "center";
+                        card2Img.style.justifyContent = "center";
+                        const card1ImgIndicator = document.createElement("div");
+                        const card2ImgIndicator = document.createElement("div");
+                        //style the img indicators:
+                        card1ImgIndicator.style.backgroundColor = "var(--robins-egg)";
+                        card1ImgIndicator.style.height = "2.5em";
+                        card1ImgIndicator.style.width = "2.5em";
+                        card1ImgIndicator.style.border = ".8px solid grey";
+                        card1ImgIndicator.style.borderRadius = "50%";
+                        card1ImgIndicator.textContent = `You`;
+                        card1ImgIndicator.style.textAlign = "center";
+                        card1ImgIndicator.style.alignItems = "center";
+                        card1ImgIndicator.style.color = "white";
+                        card1ImgIndicator.style.fontFamily = "inherit";
+                        card1ImgIndicator.style.fontSize = "2rem";
+                        card1ImgIndicator.style.marginRight = ".5em";
+                        card1ImgIndicator.classList.add("container__card1image-indicator");
 
-                    card2ImgIndicator.style.backgroundColor = "var(--twilight)";
-                    card2ImgIndicator.style.height = "2.5em";
-                    card2ImgIndicator.style.width = "2.5em";
-                    card2ImgIndicator.style.border = ".8px solid grey";
-                    card2ImgIndicator.style.borderRadius = "50%";
-                    card2ImgIndicator.textContent = `Computer`;
-                    card2ImgIndicator.style.textAlign = "center";
-                    card2ImgIndicator.style.alignItems = "center";
-                    card2ImgIndicator.style.color = "white";
-                    card2ImgIndicator.style.fontFamily = "inherit";
-                    card2ImgIndicator.style.fontSize = "2rem";
-                    card2ImgIndicator.style.marginLeft = ".5em";
+                        card2ImgIndicator.style.backgroundColor = "var(--twilight)";
+                        card2ImgIndicator.style.height = "2.5em";
+                        card2ImgIndicator.style.width = "2.5em";
+                        card2ImgIndicator.style.border = ".8px solid grey";
+                        card2ImgIndicator.style.borderRadius = "50%";
+                        card2ImgIndicator.textContent = `Computer`;
+                        card2ImgIndicator.style.textAlign = "center";
+                        card2ImgIndicator.style.alignItems = "center";
+                        card2ImgIndicator.style.color = "white";
+                        card2ImgIndicator.style.fontFamily = "inherit";
+                        card2ImgIndicator.style.fontSize = "2rem";
+                        card2ImgIndicator.style.marginLeft = ".5em";
 
-    //create and append block elements for rendering purposes:
-    let renderCardsLeft = document.createElement("p");
-    const paragraph = document.createElement("p");
-    const myScoreParagraph = document.createElement("p");
-    scoreDiv.append(myScoreParagraph);
-    const computersScoreParagraph = document.createElement("p");
-    scoreDiv.append(computersScoreParagraph);
-    const finalScoreParagraph = document.createElement("p");
-    finalScoreParagraph.style.padding = ".2em";
-    modalDiv.append(finalScoreParagraph);
-//create the final score image elements:
-const roseImg = document.createElement("img");
-const rosesImg = document.createElement("img");
-const wiltedRoseImg = document.createElement("img");
-const imageCredit = document.createElement("p");
+        //create and append block elements for rendering purposes:
+        let renderCardsLeft = document.createElement("p");
+        const paragraph = document.createElement("p");
+        const myScoreParagraph = document.createElement("p");
+        scoreDiv.append(myScoreParagraph);
+        const computersScoreParagraph = document.createElement("p");
+        scoreDiv.append(computersScoreParagraph);
+        const finalScoreParagraph = document.createElement("p");
+        finalScoreParagraph.style.padding = ".2em";
+        modalDiv.append(finalScoreParagraph);
+    //create the final score image elements:
+    const roseImg = document.createElement("img");
+    const rosesImg = document.createElement("img");
+    const wiltedRoseImg = document.createElement("img");
+    const imageCredit = document.createElement("p");
 
 //start the score keepers at 0:
 let myScore = 0;
@@ -104,7 +110,13 @@ dealBtn.addEventListener("click", function(e) {
             container.append(card2Img);
             container.append(card2ImgIndicator);
             determineWinner(data.cards[0].value, data.cards[1].value, cardsLeft);
-    })//close the draw btn e listener
+
+        //create the easter egg
+    card2ImgIndicator.addEventListener("click", function(e) {
+    easterEggModal.classList.remove("hidden");
+    easterEggParagraph.textContent = `I'm holding the ${data.cards[1].value} of ${data.cards[1].suit}.`
+    })//close the easter egg e listener.     
+    })//close the draw btn e listener  
 
 //create a way to determine the winner. 
 
