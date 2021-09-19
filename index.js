@@ -83,6 +83,7 @@ let deckId;
 
 dealBtn.addEventListener("click", function(e) {
     e.preventDefault();
+    dealBtn.classList.add("hidden");
     handleClickDeal();
 })
 
@@ -154,29 +155,30 @@ if (cardsRemaining > 0) {
             console.log("my score :", myScore);
             console.log("computer's score :", computersScore);
         } 
-    } else {
-        if (myScore > computersScore) {
-            clearElementRenders();
-            finalScoreParagraph.textContent = `You won the war!`;
-            modalDiv.style.border = "2px solid white";
-            roseImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/rose.jpeg";
-            modalDiv.append(roseImg);
-            imageCredit.textContent = `medium: <a>https://www.pexels.com/photo/close-photography-of-red-and-pink-rose-56866/</a>`;
-        } else if (computersScore > myScore) {
-            clearElementRenders();
-            finalScoreParagraph.textContent = `The computer won this war.  Better luck next time...`;
-            modalDiv.style.border = "2px solid white";
-            wiltedRoseImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/wiltedrose.jpeg";
-            modalDiv.append(wiltedRoseImg);
-            imageCredit.textContent = `medium: <a>https://www.pexels.com/photo/shabby-rose-with-scattered-petals-around-4041333/</a>`
-        } else {
-            clearElementRenders();
-            finalScoreParagraph.textContent = `This war had no clear winner - it was a tie.`
-            modalDiv.style.border = "2px solid white";
-            rosesImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/wiltedrose.jpeg";
-            modalDiv.append(rosesImg);
-            imageCredit.textContent = `medium: <a>https://www.pexels.com/photo/crop-woman-demonstrating-twig-of-red-roses-7700232/</a>`
-        }
+    } else if (cardsRemaining == 0) {
+        drawBtn.classList.add("hidden");
+            if (myScore > computersScore) {
+                clearElementRenders();
+                finalScoreParagraph.textContent = `You won the war!`;
+                modalDiv.style.border = "2px solid white";
+                roseImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/rose.jpeg";
+                modalDiv.append(roseImg);
+                imageCredit.textContent = `medium: <a>https://www.pexels.com/photo/close-photography-of-red-and-pink-rose-56866/</a>`;
+            } else if (computersScore > myScore) {
+                clearElementRenders();
+                finalScoreParagraph.textContent = `The computer won this war.  Better luck next time...`;
+                modalDiv.style.border = "2px solid white";
+                wiltedRoseImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/wiltedrose.jpeg";
+                modalDiv.append(wiltedRoseImg);
+                imageCredit.textContent = `medium: <a>https://www.pexels.com/photo/shabby-rose-with-scattered-petals-around-4041333/</a>`
+            } else {
+                clearElementRenders();
+                finalScoreParagraph.textContent = `This war had no clear winner - it was a tie.`
+                modalDiv.style.border = "2px solid white";
+                rosesImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/wiltedrose.jpeg";
+                modalDiv.append(rosesImg);
+                imageCredit.textContent = `medium: <a>https://www.pexels.com/photo/crop-woman-demonstrating-twig-of-red-roses-7700232/</a>`
+            }
     }
 } //close function determineWinner()
 
@@ -184,12 +186,14 @@ function clearElementRenders() {
     card1ImgIndicator.classList.add("hidden");
     card2ImgIndicator.classList.add("hidden");
     header.textContent = "";
+    header.style.margin = "0 auto";
     renderCardsLeft.textContent = "";
     card1Img.src = "";
     card2Img.src = "";
     drawBtn.classList.add("hidden");
     dealBtn.classList.add("hidden");
     header.classList.add("hidden");
+    paragraph.textContent = "";
     myScoreParagraph.textContent = "";
     computersScoreParagraph.textContent = "";
 }
