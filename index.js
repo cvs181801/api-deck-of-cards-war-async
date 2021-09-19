@@ -67,88 +67,68 @@ const imageCredit = document.createElement("p");
 //start the score keepers at 0:
 let myScore = 0;
 let computersScore = 0;
-var deckId = `${data.deck_id}`;
-var playerCardCode = data.cards[0].code;
-var computerCardCode = data.cards[1].code;
-
-//make the deal button work:
-dealBtn.addEventListener("click", function(e) {
-e.preventDefault();
-handleClickDeal();
-
-//make the discard button work:
-discardBtn.addEventListener("click", function(e) {
-    e.preventDefault();
-    handleClickDiscard(deckId, playerCardCode, computerCardCode);
-    })
+let deckId;
 
 //create a way to get a new deck of cards from the deck of cards api.
-
-async function handleClickDeal() {
-    dealBtn.classList.add("hidden");
-    discardBtn.classList.remove("hidden");
-    const res = await fetch("https://apis.scrimba.com/deckofcards/api/deck/new/draw/?count=2", {
-        method: 'GET',
-        jokers_enabled: true,
-    })
-    const data = await res.json()
+    
+    async function handleClickDeal() {
+    const response = await fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
+        const data = await response.json()
+        deckId = `${data.deck_id}`;
         console.log(data);
         let cardsLeft = data.remaining;
         renderCardsLeft.textContent = `Cards left: ${cardsLeft}`;
         resultDiv.append(renderCardsLeft);
-        card1Img.src = `${data.cards[0].image}`
-        container.append(card1Img);
-        container.insertBefore(card1ImgIndicator, card1Img);
-        console.log(`${data.cards[1].image}`)
-        card2Img.src = `${data.cards[1].image}`;
-        container.append(card2Img);
-        container.append(card2ImgIndicator);
-        let deckId = `${data.deck_id}`; 
-        let playerCardCode = data.cards[0].code;
-        let computerCardCode = data.cards[1].code;
-        console.log(deckId);
-        console.log(playerCardCode);
-        console.log(computerCardCode);
-        determineWinner(data.cards[0].value, data.cards[1].value, cardsLeft);
-} //close function handleClick Deal()
+    } //close handleClickDeal()
 
-//create a way to discard the cards to the discard pile.
-async function handleClickDiscard(deckId, playerCardCode, computerCardCode) {
-    myScoreParagraph.textContent = "";
-    computersScoreParagraph. textContent = "";
-    paragraph.textContent = "";
-    discardBtn.classList.add("hidden");
-    drawBtn.classList.remove("hidden");
-    const res = await fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/pile/discardPile/add/?cards=${playerCardCode},${computerCardCode}`)
-        const data = await res.json()    
-            console.log(data)
-            console.log(data.remaining)
-            card1Img.src = "";
-            card2Img.src = "";
-} //close function handleClickDiscard()
+dealBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    handleClickDeal();
+})
 
-    drawBtn.addEventListener("click", function(e) {
-        e.preventDefault();
-        discardBtn.classList.remove("hidden");
-        drawBtn.classList.add("hidden");
-        paragraph.textContent = "";
-        fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
-        .then(res=> res.json())
-        .then((data) => {
+// discardBtn.addEventListener("click", function(e) {
+//     e.preventDefault();
+//     myScoreParagraph.textContent = "";
+//     computersScoreParagraph. textContent = "";
+//     paragraph.textContent = "";
+//     discardBtn.classList.add("hidden");
+//     drawBtn.classList.remove("hidden");
+//     console.log(deckId);
+//     let playerCardCode = data.cards[0].code;
+//     let computerCardCode = data.cards[1].code;
+//     console.log(playerCardCode);
+//     console.log(computerCardCode); //https://apis.scrimba.com/deckofcards/api/deck/new/draw/?count=2   //`https://www.deckofcardsapi.com/api/deck/${deckId}/pile/${discardPile}/add/?cards=${playerCardCode},${computerCardCode}`
+//     fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/pile/discardPile/add/?cards=${playerCardCode},${computerCardCode}`)
+//         .then(res => res.json())
+//         .then((data) => {
+//             console.log(data)
+//             console.log(data.remaining)
+//             card1Img.src = "";
+//             card2Img.src = "";
+//         })   
+//     })
+
+    drawBtn.addEventListener("click", async () => { 
+            const result = await fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
+            const data = await result.json()
             console.log(data)
-            card1Img.src = `${data.cards[0].image}`;
-            card2Img.src = `${data.cards[1].image}`;
             let cardsLeft = data.remaining;
             renderCardsLeft.textContent = `Cards left: ${cardsLeft}`;
-            
+            card1Img.src = `${data.cards[0].image}`;
+            card2Img.src = `${data.cards[1].image}`;
+            card1Img.src = `${data.cards[0].image}`
+            container.append(card1Img);
+            container.insertBefore(card1ImgIndicator, card1Img);
+            console.log(`${data.cards[1].image}`)
+            card2Img.src = `${data.cards[1].image}`;
+            container.append(card2Img);
+            container.append(card2ImgIndicator);
             determineWinner(data.cards[0].value, data.cards[1].value, cardsLeft);
           
-            
+       
     })//close the draw btn e listener
     
-})//close the discard btn e listener
-    
-}); //close the deal new deck e listener
+//})//close the discard btn e listener
 
 //create a way to determine the winner. * for more possible solutions for the determineWinner function challenge, see bottom part of code.*
       //** function:
@@ -268,3 +248,4 @@ card2ImgIndicator.addEventListener("mouseout", function(e) {
     card2ImgIndicator.style.transform = "rotate(180deg) scale(1)";
     card2ImgIndicator.style.zIndex = "1000";
 })
+
