@@ -38,6 +38,7 @@ const allNodes = document.getElementsByTagName('*');
                         card1ImgIndicator.style.fontFamily = "inherit";
                         card1ImgIndicator.style.fontSize = "2rem";
                         card1ImgIndicator.style.marginRight = ".5em";
+                        card1ImgIndicator.style.cursor = "pointer";
                         card1ImgIndicator.classList.add("container__card1image-indicator");
 
                         card2ImgIndicator.style.backgroundColor = "var(--twilight)";
@@ -52,6 +53,7 @@ const allNodes = document.getElementsByTagName('*');
                         card2ImgIndicator.style.fontFamily = "inherit";
                         card2ImgIndicator.style.fontSize = "2rem";
                         card2ImgIndicator.style.marginLeft = ".5em";
+                        card2ImgIndicator.style.cursor = "pointer";
 
         //create and append block elements for rendering purposes:
         let renderCardsLeft = document.createElement("p");
@@ -113,10 +115,18 @@ dealBtn.addEventListener("click", function(e) {
             determineWinner(data.cards[0].value, data.cards[1].value, cardsLeft);
 
         //create the easter egg
+
+    card1ImgIndicator.addEventListener("click", function(e) {
+        e.preventDefault();
+        easterEggModal.classList.remove("hidden");
+        easterEggImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/mediavalrose.jpg";
+        easterEggParagraph.textContent = `You holding the ${data.cards[0].value} of ${data.cards[0].suit}.`
+    })    
     card2ImgIndicator.addEventListener("click", function(e) {
-    easterEggModal.classList.remove("hidden");
-    easterEggImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/cards.jpeg";
-    easterEggParagraph.textContent = `The computer is holding the ${data.cards[1].value} of ${data.cards[1].suit}.`
+        e.preventDefault();
+        easterEggModal.classList.remove("hidden");
+        easterEggImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/mediavalcourt.jpg";
+        easterEggParagraph.textContent = `The computer is holding the ${data.cards[1].value} of ${data.cards[1].suit}.`
     })//close the easter egg e listener.     
     })//close the draw btn e listener  
 
