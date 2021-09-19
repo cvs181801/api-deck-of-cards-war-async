@@ -1,0 +1,154 @@
+:root {
+    --lt-blush: #D0B6BB;
+    --drk-blush: #7a6b6e;
+    --med-blush: #b2868e;
+    --taupe: #917F82;
+    --twilight: rgb(134, 92, 250);
+    --robins-egg: rgb(34, 247, 229);
+    --ochre: rgb(255, 208, 0);
+    --tomato: rgb(255, 63, 29);
+    --grey: grey;
+    --drk-grey: rgb(37, 37, 37);
+    --ff-bona-nova: 'Bona Nova', serif;
+    --ff-urbanist: 'Urbanist', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: var(--drk-blush);
+    color: white;
+    font-family: var(--ff-urbanist);
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin-bottom: .5em;
+    margin-top: .5em;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+.container {
+    margin: 0 auto;  
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+img {
+    filter: hue-rotate(180deg); 
+    margin: auto;
+    display: block;
+    width: 45%;
+}
+
+.btn__deal {
+    background-color: var(--lt-blush);
+    color: var(--drk-grey);
+    border: 1px solid var(--drk-grey);
+    border-radius: 70%;
+    padding: .5em;
+    height: 3em;
+    cursor: pointer;
+    margin-bottom: 1em;
+}
+
+.btn__draw {
+    background-color: var(--lt-blush);
+    color: var(--drk-grey);
+    border: 1px solid var(--drk-grey);
+    border-radius: 70%;
+    padding: .5em;
+    height: 3.5em;
+    cursor: pointer;
+    margin-bottom: 1em;
+}
+
+.btn__discard {
+    background-color: var(--lt-blush);
+    color: var(--drk-grey);
+    border: 1px solid var(--drk-grey);
+    border-radius: 70%;
+    padding: .5em;
+    height: 4.5em;
+    cursor: pointer;
+    margin-bottom: 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+.score {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 15em;
+}
+
+.modal {
+    /*position: absolute;*/
+    /*max-width: 90vw;
+    max-height: 90vh;*/
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    /*top: 5em;
+    left: 4.5em;*/
+    /*top: auto;
+    left: auto;*/
+    border-radius: 10px;
+    border: 2px solid red;
+}
+
+.modal > img {
+    filter: hue-rotate(230deg);
+    object-fit: cover;
+    max-width: 98vw;
+    max-height: 98vh;
+    border-radius: 10px;
+    padding: .3em;
+    margin: 0 auto;
+    display: block;
+    border: 2px solid pink;
+}
+
+@media (min-width: 600px) {
+    .modal {
+       /* top: 5em;
+        left: 20em;*/
+        margin: 0 auto;
+        top: auto;
+        left: auto;
+        
+    }
+
+    .container {
+        display: flex;
+        margin: 0 auto;  
+        max-width: 50vw;
+        justify-content: center;
+    }
+
+   .container > img {
+       max-width: 45%;
+
+   }
+
+   .container__card1image-indicator {
+       width: 3em;
+   }
+}
