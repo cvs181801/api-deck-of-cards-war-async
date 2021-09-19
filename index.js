@@ -86,28 +86,6 @@ dealBtn.addEventListener("click", function(e) {
     handleClickDeal();
 })
 
-// discardBtn.addEventListener("click", function(e) {
-//     e.preventDefault();
-//     myScoreParagraph.textContent = "";
-//     computersScoreParagraph. textContent = "";
-//     paragraph.textContent = "";
-//     discardBtn.classList.add("hidden");
-//     drawBtn.classList.remove("hidden");
-//     console.log(deckId);
-//     let playerCardCode = data.cards[0].code;
-//     let computerCardCode = data.cards[1].code;
-//     console.log(playerCardCode);
-//     console.log(computerCardCode); //https://apis.scrimba.com/deckofcards/api/deck/new/draw/?count=2   //`https://www.deckofcardsapi.com/api/deck/${deckId}/pile/${discardPile}/add/?cards=${playerCardCode},${computerCardCode}`
-//     fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/pile/discardPile/add/?cards=${playerCardCode},${computerCardCode}`)
-//         .then(res => res.json())
-//         .then((data) => {
-//             console.log(data)
-//             console.log(data.remaining)
-//             card1Img.src = "";
-//             card2Img.src = "";
-//         })   
-//     })
-
     drawBtn.addEventListener("click", async () => { 
             const result = await fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
             const data = await result.json()
@@ -127,11 +105,9 @@ dealBtn.addEventListener("click", function(e) {
           
        
     })//close the draw btn e listener
-    
-//})//close the discard btn e listener
 
-//create a way to determine the winner. * for more possible solutions for the determineWinner function challenge, see bottom part of code.*
-      //** function:
+//create a way to determine the winner. 
+
 function determineWinner(card1, card2, cardsRemaining) {
 
 if (cardsRemaining > 0) {
@@ -211,18 +187,16 @@ function clearElementRenders() {
     renderCardsLeft.textContent = "";
     card1Img.src = "";
     card2Img.src = "";
-    discardBtn.classList.add("hidden");
     drawBtn.classList.add("hidden");
+    dealBtn.classList.add("hidden");
+    header.classList.add("hidden");
     myScoreParagraph.textContent = "";
-    computersScoreParagraph. textContent = "";
+    computersScoreParagraph.textContent = "";
 }
 
 card1ImgIndicator.addEventListener("mouseover", function(e) {
     e.preventDefault();
-    //card1Img.style.border = "2px solid var(--robins-egg)";
-    //card1Img.style.borderRadius = "10px";
     card1ImgIndicator.style.transform = "rotate(-180deg) scale(2)";
-    //card1ImgIndicator.style.backgroundColor = "rgba(247, 34, 52, .5)";
     card1ImgIndicator.style.zIndex = "1000";
     card1ImgIndicator.style.opacity = ".8";
 })
@@ -235,10 +209,7 @@ card1ImgIndicator.addEventListener("mouseout", function(e) {
 
 card2ImgIndicator.addEventListener("mouseover", function(e) {
     e.preventDefault();
-    //card2Img.style.border = "2px solid var(--twilight)";
-    //card2Img.style.borderRadius = "10px";
     card2ImgIndicator.style.transform = "rotate(-180deg) scale(2)";
-    //card2ImgIndicator.style.backgroundColor =  "rgba(208, 250, 92, .5)";
     card2ImgIndicator.style.zIndex = "1000";
     card2ImgIndicator.style.opacity = ".8";
 })
