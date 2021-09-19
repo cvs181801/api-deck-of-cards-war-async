@@ -57,7 +57,6 @@ const allNodes = document.getElementsByTagName('*');
     scoreDiv.append(computersScoreParagraph);
     const finalScoreParagraph = document.createElement("p");
     finalScoreParagraph.style.padding = ".2em";
-    finalScoreParagraph.style.border = "2px solid yellow";
     modalDiv.append(finalScoreParagraph);
 //create the final score image elements:
 const roseImg = document.createElement("img");
@@ -80,13 +79,14 @@ let deckId;
         let cardsLeft = data.remaining;
         renderCardsLeft.textContent = `Cards left: ${cardsLeft}`;
         resultDiv.append(renderCardsLeft);
+        drawBtn.classList.remove("hidden");
     } //close handleClickDeal()
 
 dealBtn.addEventListener("click", function(e) {
     e.preventDefault();
     dealBtn.classList.add("hidden");
     handleClickDeal();
-})
+})//close deal buttn event listener
 
     drawBtn.addEventListener("click", async () => { 
             const result = await fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
@@ -104,8 +104,6 @@ dealBtn.addEventListener("click", function(e) {
             container.append(card2Img);
             container.append(card2ImgIndicator);
             determineWinner(data.cards[0].value, data.cards[1].value, cardsLeft);
-          
-       
     })//close the draw btn e listener
 
 //create a way to determine the winner. 
