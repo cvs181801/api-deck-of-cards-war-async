@@ -216,31 +216,31 @@ function clearElementRenders() {
 
 card1ImgIndicator.addEventListener("mouseover", function(e) {
     e.preventDefault();
-    card1ImgIndicator.style.transform = "rotate(-180deg) scale(2)";
+    card1ImgIndicator.style.transform = "rotate(-360deg) scale(2)";
     card1ImgIndicator.style.zIndex = "1000";
     card1ImgIndicator.style.opacity = ".8";
-    card1ImgIndicator.style.transition = "all 3s ease-in-out";
+    card1ImgIndicator.style.transition = "all 1s ease-in-out";
 })
 
 card1ImgIndicator.addEventListener("mouseout", function(e) {
     e.preventDefault();
-    card1ImgIndicator.style.transform = "rotate(180deg) scale(1)";
+    card1ImgIndicator.style.transform = "rotate(360deg) scale(1)";
     card1ImgIndicator.style.zIndex = "1000";
-    card1ImgIndicator.style.transition = "all 3s ease-in-out";
+    card1ImgIndicator.style.transition = "all 1s ease-in-out";
 })
 
 card2ImgIndicator.addEventListener("mouseover", function(e) {
     e.preventDefault();
-    card2ImgIndicator.style.transform = "rotate(-180deg) scale(2)";
+    card2ImgIndicator.style.transform = "rotate(-360deg) scale(2)";
     card2ImgIndicator.style.zIndex = "1000";
     card2ImgIndicator.style.opacity = ".8";
-    card2ImgIndicator.style.transition = "all 3s ease-in-out";
+    card2ImgIndicator.style.transition = "all 1s ease-in-out";
 })
 
 card2ImgIndicator.addEventListener("mouseout", function(e) {
     e.preventDefault();
-    card2ImgIndicator.style.transform = "rotate(180deg) scale(1)";
+    card2ImgIndicator.style.transform = "rotate(360deg) scale(1)";
     card2ImgIndicator.style.zIndex = "1000";
-    card2ImgIndicator.style.transition = "all 3s ease-in-out";
+    card2ImgIndicator.style.transition = "all 1s ease-in-out";
 })
 
