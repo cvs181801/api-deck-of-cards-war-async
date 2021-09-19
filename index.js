@@ -1,4 +1,5 @@
 //grab elements from the DOM
+const allNodes = document.getElementsByTagName('*');
     //buttons:
     const dealBtn = document.querySelector(".btn__deal");
     const drawBtn = document.querySelector(".btn__draw");
@@ -196,6 +197,9 @@ function clearElementRenders() {
     paragraph.textContent = "";
     myScoreParagraph.textContent = "";
     computersScoreParagraph.textContent = "";
+    for (let i=0; i> allNodes.length; i++) {
+        allNodes[i].style.margin = "0 auto";
+    }
 }
 
 card1ImgIndicator.addEventListener("mouseover", function(e) {
