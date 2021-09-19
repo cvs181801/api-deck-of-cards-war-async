@@ -12,7 +12,6 @@ const allNodes = document.getElementsByTagName('*');
         const easterEggModal = document.querySelector(".easteregg");
             //easter egg modal div styling
             const easterEggImg = document.createElement("img");
-            easterEggImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/cards.jpeg";
             easterEggModal.append(easterEggImg);
             const easterEggParagraph = document.querySelector(".easteregg__p");
                 //header:
@@ -109,12 +108,15 @@ dealBtn.addEventListener("click", function(e) {
             card2Img.src = `${data.cards[1].image}`;
             container.append(card2Img);
             container.append(card2ImgIndicator);
+            easterEggParagraph.textContent = ``;
+            easterEggImg.src = ``;
             determineWinner(data.cards[0].value, data.cards[1].value, cardsLeft);
 
         //create the easter egg
     card2ImgIndicator.addEventListener("click", function(e) {
     easterEggModal.classList.remove("hidden");
-    easterEggParagraph.textContent = `I'm holding the ${data.cards[1].value} of ${data.cards[1].suit}.`
+    easterEggImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/cards.jpeg";
+    easterEggParagraph.textContent = `The computer is holding the ${data.cards[1].value} of ${data.cards[1].suit}.`
     })//close the easter egg e listener.     
     })//close the draw btn e listener  
 
@@ -217,12 +219,14 @@ card1ImgIndicator.addEventListener("mouseover", function(e) {
     card1ImgIndicator.style.transform = "rotate(-180deg) scale(2)";
     card1ImgIndicator.style.zIndex = "1000";
     card1ImgIndicator.style.opacity = ".8";
+    card1ImgIndicator.style.transition = "all 3s ease-in-out";
 })
 
 card1ImgIndicator.addEventListener("mouseout", function(e) {
     e.preventDefault();
     card1ImgIndicator.style.transform = "rotate(180deg) scale(1)";
     card1ImgIndicator.style.zIndex = "1000";
+    card1ImgIndicator.style.transition = "all 3s ease-in-out";
 })
 
 card2ImgIndicator.addEventListener("mouseover", function(e) {
@@ -230,11 +234,13 @@ card2ImgIndicator.addEventListener("mouseover", function(e) {
     card2ImgIndicator.style.transform = "rotate(-180deg) scale(2)";
     card2ImgIndicator.style.zIndex = "1000";
     card2ImgIndicator.style.opacity = ".8";
+    card2ImgIndicator.style.transition = "all 3s ease-in-out";
 })
 
 card2ImgIndicator.addEventListener("mouseout", function(e) {
     e.preventDefault();
     card2ImgIndicator.style.transform = "rotate(180deg) scale(1)";
     card2ImgIndicator.style.zIndex = "1000";
+    card2ImgIndicator.style.transition = "all 3s ease-in-out";
 })
 
