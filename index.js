@@ -119,13 +119,13 @@ dealBtn.addEventListener("click", function(e) {
     card1ImgIndicator.addEventListener("click", function(e) {
         e.preventDefault();
         easterEggModal.classList.remove("hidden");
-        easterEggImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/mediavalrose.jpg";
+        easterEggImg.src = "./pics/mediavalrose.jpg";
         easterEggParagraph.textContent = `You holding the ${data.cards[0].value} of ${data.cards[0].suit}.`
     })    
     card2ImgIndicator.addEventListener("click", function(e) {
         e.preventDefault();
         easterEggModal.classList.remove("hidden");
-        easterEggImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/mediavalcourt.jpg";
+        easterEggImg.src = "./pics/mediavalcourt.jpg";
         easterEggParagraph.textContent = `The computer is holding the ${data.cards[1].value} of ${data.cards[1].suit}.`
     })//close the easter egg e listener.     
     })//close the draw btn e listener  
@@ -184,21 +184,21 @@ if (cardsRemaining > 0) {
                 clearElementRenders();
                 finalScoreParagraph.textContent = `You won the war!`;
                 modalDiv.style.border = "2px solid white";
-                roseImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/rose.jpeg";
+                roseImg.src = "./pics/rose.jpeg";
                 modalDiv.append(roseImg);
                 imageCredit.textContent = `medium: <a>https://www.pexels.com/photo/close-photography-of-red-and-pink-rose-56866/</a>`;
             } else if (computersScore > myScore) {
                 clearElementRenders();
                 finalScoreParagraph.textContent = `The computer won this war.  Better luck next time...`;
                 modalDiv.style.border = "2px solid white";
-                wiltedRoseImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/wiltedrose.jpeg";
+                wiltedRoseImg.src = "./pics/wiltedrose.jpeg";
                 modalDiv.append(wiltedRoseImg);
                 imageCredit.textContent = `medium: <a>https://www.pexels.com/photo/shabby-rose-with-scattered-petals-around-4041333/</a>`
             } else {
                 clearElementRenders();
                 finalScoreParagraph.textContent = `This war had no clear winner - it was a tie.`
                 modalDiv.style.border = "2px solid white";
-                rosesImg.src = "/Users/casvalkyriespicer/Documents/GitHub/api-deck-of-cards-war/pics/wiltedrose.jpeg";
+                rosesImg.src = "./pics/wiltedrose.jpeg";
                 modalDiv.append(rosesImg);
                 imageCredit.textContent = `medium: <a>https://www.pexels.com/photo/crop-woman-demonstrating-twig-of-red-roses-7700232/</a>`
             }
